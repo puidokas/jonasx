@@ -1,0 +1,31 @@
+body {
+    font-family: Open Sans,sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.75rem;
+    font-kerning: normal;
+}
+
+h2 a, h2 a:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: rgba(0,0,0,.7);
+}
+
+header a, header a:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+a, a:hover {
+    color: #ff5800;
+}
+
+@media (min-width: 1200px) {
+    .container {
+      width: 700px;
+    }
+  }

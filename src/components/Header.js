@@ -35,7 +35,7 @@ const Header = ({content, actResponsive, lang, changeLang}) => {
                     <FormattedMessage id="cv_url">{url => <a href={url} className={navBarMargin} target="_blank" data-tip="CV on Google Drive"><FaIdCard/></a>}</FormattedMessage>
                     <a href={content.git_url} className={navBarMargin} target="_blank" data-tip="Code on GitLab"><FaGitlab/></a>
                     <a href={content.linkedin_url} className={navBarMargin} target="_blank" data-tip="LinkedIn Profile"><FaLinkedin/></a>
-                    <a href="#" onClick={(e) => changeLang(e)}>
+                    <a href="/" onClick={(e) => changeLang(e)}>
                         <span className={"flag-icon flag-icon-" + lang_country + " " + navBarMargin} data-tip={"Change language to " + lang_country_print + "?"}/>
                     </a>
                 </div>

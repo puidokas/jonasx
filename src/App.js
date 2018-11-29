@@ -9,13 +9,13 @@ import locale_da from 'react-intl/locale-data/da';
 import lang_da from "./translations/da.json";
 import lang_en from "./translations/en.json";
 import {FormattedMessage} from 'react-intl';
-
+import NavBar from './components/NavBar';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            lang: "en", // 0 = en; 1 = da
+            lang: "en",
         };
         this.json = require('./content.json');
         this.resizeThrottled = throttle(1000, this.resize);
@@ -23,6 +23,7 @@ class App extends Component {
 
     componentDidMount() {
         window.addEventListener("resize", this.resizeThrottled);
+        this.setDefaultLang();
     }
 
     componentWillUnmount() {
@@ -36,6 +37,13 @@ class App extends Component {
             return true;
         else
             return false;
+    }
+
+    setDefaultLang = () => {
+        let lang = navigator.language.split(/[-_]/)[0];
+
+        if(this.state.lang !== lang)
+            this.setState({lang: lang});
     }
 
     changeLang = (e) => {
@@ -52,7 +60,6 @@ class App extends Component {
             'en': lang_en
         };
         
-        // const language = navigator.language.split(/[-_]/)[0];  // language without region code
         // const language = 'en';
         let language = this.state.lang;
         addLocaleData([...locale_en, ...locale_da]);
@@ -60,7 +67,8 @@ class App extends Component {
         return (
             <IntlProvider locale={language} messages={lang[language]}>
                 <div className='container p-3'>
-                    <Header content={this.json} actResponsive={actResponsive} lang={this.state.lang} changeLang={this.changeLang}/>
+                    <Header content={this.json}/>
+                    <NavBar content={this.json} actResponsive={actResponsive} lang={this.state.lang} changeLang={this.changeLang}/>
                     <div>
                         <FormattedMessage id="intro_1" tagName="p"/>
                         <FormattedMessage id="intro_2" tagName="p"/>
@@ -75,7 +83,7 @@ class App extends Component {
                         <div className="flex-grow-1 text-justify mr-4">
                             <p><FormattedMessage id="contact" values={{link: <a href="https://www.linkedin.com/in/hoffmannjonas/" rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/>.</p>
                         </div>  
-                        <div className={"LI-profile-badge" + (actResponsive ? " my-3" : "")} data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="hoffmannjonas"><a class="LI-simple-link" href='https://dk.linkedin.com/in/hoffmannjonas?trk=profile-badge'>Jonas Hoffmann</a></div>
+                        <div className={"LI-profile-badge" + (actResponsive ? " my-3" : "")} data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="hoffmannjonas"><a className="LI-simple-link" href='https://dk.linkedin.com/in/hoffmannjonas?trk=profile-badge'>Jonas Hoffmann</a></div>
                     </div>
                 </div>
             </IntlProvider>

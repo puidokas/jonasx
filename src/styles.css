@@ -20,6 +20,11 @@ p {
     background-color: #F7F7F7;
 }
 
+._navbar a:hover {
+    background-color: #D1D1D1;
+    text-decoration: none;
+}
+
 h2 a, h2 a:hover {
     color: #000000;
     font-weight: bold;

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { throttle } from "throttle-debounce";
 import '../styles.css';
-import Header from './Header'
-import {IntlProvider} from "react-intl";
-import { addLocaleData } from "react-intl";
+// react-intl
+import {IntlProvider, addLocaleData} from "react-intl";
 import locale_en from 'react-intl/locale-data/en';
 import locale_da from 'react-intl/locale-data/da';
 import lang_da from "../translations/da.json";
 import lang_en from "../translations/en.json";
 import {FormattedMessage} from 'react-intl';
+// components
+import Header from './Header'
 import NavBar from './NavBar';
 
 class App extends Component {
@@ -54,6 +55,8 @@ class App extends Component {
         
         let language = this.state.lang;
         let messages = language === 'da' ? lang_da : lang_en;
+        let li_badge_container = actResponsive ? " flex-wrap" : "";
+        let li_badge = actResponsive ? " mb-2" : "";
 
         addLocaleData([...locale_en, ...locale_da]);
 
@@ -72,11 +75,11 @@ class App extends Component {
                     <FormattedMessage id="nav.code">{h => <h2 id="code"><a href="#top">{h}</a></h2>}</FormattedMessage>
                     <FormattedMessage id="code">{t => <p>{t} <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a>.</p>}</FormattedMessage>
                     <FormattedMessage id="nav.contact">{h => <h2 id="contact"><a href="#top">{h}</a></h2>}</FormattedMessage>
-                    <div className={"d-flex" + (actResponsive ? " flex-wrap" : "")}>
+                    <div className={"d-flex" + li_badge_container}>
                         <div className="flex-grow-1 text-justify mr-4">
                             <p><FormattedMessage id="contact" values={{link: <a href="https://www.linkedin.com/in/hoffmannjonas/" rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/>.</p>
                         </div>  
-                        <div className={"LI-profile-badge" + (actResponsive ? " my-3" : "")} data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="hoffmannjonas"><a className="LI-simple-link" href='https://dk.linkedin.com/in/hoffmannjonas?trk=profile-badge'>Jonas Hoffmann</a></div>
+                        <div className={"LI-profile-badge" + li_badge} data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="hoffmannjonas"><a className="LI-simple-link" href='https://dk.linkedin.com/in/hoffmannjonas?trk=profile-badge'>Jonas Hoffmann</a></div>
                     </div>
                 </div>
             </IntlProvider>

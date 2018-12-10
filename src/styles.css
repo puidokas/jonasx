@@ -27,6 +27,10 @@ p {
 
 h2 a, h2 a:hover {
     color: #000000;
+    /* font-weight: bold; */
+}
+
+h2 {
     font-weight: bold;
 }
 

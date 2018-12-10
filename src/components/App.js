@@ -65,6 +65,7 @@ class App extends Component {
                 <div className='container p-3'>
                     <Header content={this.content}/>
                     <NavBar content={this.content} actResponsive={actResponsive} lang={this.state.lang} changeLang={this.changeLang}/>
+                    <FormattedMessage id="nav.intro">{h => <h2 id="cv">{h}</h2>}</FormattedMessage>
                     <div>
                         <FormattedMessage id="intro_1" tagName="p"/>
                         <FormattedMessage id="intro_2" tagName="p"/>

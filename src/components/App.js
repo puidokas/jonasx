@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { throttle } from "throttle-debounce";
 import '../styles.css';
 // react-intl
 import {IntlProvider, addLocaleData} from "react-intl";
@@ -19,22 +18,10 @@ class App extends Component {
             lang: "en",
         };
         this.content = require('../content.json');
-        this.resizeThrottled = throttle(1000, this.resize);
     }
 
     componentDidMount() {
-        window.addEventListener("resize", this.resizeThrottled);
         this.setDefaultLang();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resizeThrottled)
-      }
-
-    resize = () => this.forceUpdate()
-
-    isWindowWidthOver(width) {
-        return window.innerWidth > width ? true : false;
     }
 
     setDefaultLang = () => {
@@ -50,21 +37,17 @@ class App extends Component {
         this.setState({lang: changeTo});
     }
 
-    render() {
-        let actResponsive = !this.isWindowWidthOver(499) ? true : false;
-        
+    render() {        
         let language = this.state.lang;
         let messages = language === 'da' ? lang_da : lang_en;
-        let li_badge_container = actResponsive ? " flex-wrap" : "";
-        let li_badge = actResponsive ? " mb-2" : "";
 
         addLocaleData([...locale_en, ...locale_da]);
 
         return (
             <IntlProvider locale={language} messages={messages}>
-                <div className='container p-3'>
-                    <Header content={this.content}/>
-                    <NavBar content={this.content} actResponsive={actResponsive} lang={this.state.lang} changeLang={this.changeLang}/>
+                <div className='container niceBorder'>
+                    <Header content={this.content} lang={this.state.lang} changeLang={this.changeLang}/>
+                    <NavBar content={this.content}/>
                     <FormattedMessage id="nav.intro">{h => <h2 id="cv">{h}</h2>}</FormattedMessage>
                     <div>
                         <FormattedMessage id="intro_1" tagName="p"/>
@@ -76,12 +59,7 @@ class App extends Component {
                     <FormattedMessage id="nav.code">{h => <h2 id="code"><a href="#top">{h}</a></h2>}</FormattedMessage>
                     <FormattedMessage id="code">{t => <p>{t} <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a>.</p>}</FormattedMessage>
                     <FormattedMessage id="nav.contact">{h => <h2 id="contact"><a href="#top">{h}</a></h2>}</FormattedMessage>
-                    <div className={"d-flex" + li_badge_container}>
-                        <div className="flex-grow-1 text-justify mr-4">
-                            <p><FormattedMessage id="contact" values={{link: <a href="https://www.linkedin.com/in/hoffmannjonas/" rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/>.</p>
-                        </div>  
-                        <div className={"LI-profile-badge" + li_badge} data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="hoffmannjonas"><a className="LI-simple-link" href='https://dk.linkedin.com/in/hoffmannjonas?trk=profile-badge'>Jonas Hoffmann</a></div>
-                    </div>
+                    <p><FormattedMessage id="contact" values={{link: <a href="https://www.linkedin.com/in/hoffmannjonas/" rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/>.</p>
                 </div>
             </IntlProvider>
         );

@@ -3,12 +3,10 @@ image: node
 pages:
   script:
   - npm install
-  - rm -rf public
   - npm run build
-  - mv build public
   artifacts:
     paths:
-    - public
+    - build
   cache:
     paths:
       - node_modules

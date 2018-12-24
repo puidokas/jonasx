@@ -3,7 +3,9 @@ image: node
 pages:
   script:
   - npm install
+  - rm -rf public
   - npm run build
+  - mv build public
   artifacts:
     paths:
     - public

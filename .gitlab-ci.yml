@@ -1,6 +1,6 @@
 image: node
 
-build:
+pages:
   script:
   - npm install
   - npm run build

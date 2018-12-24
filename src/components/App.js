@@ -48,7 +48,7 @@ class App extends Component {
                 <div className='container niceBorder'>
                     <Header content={this.content} lang={this.state.lang} changeLang={this.changeLang}/>
                     <NavBar content={this.content}/>
-                    <FormattedMessage id="nav.intro">{h => <h2 id="cv">{h}</h2>}</FormattedMessage>
+                    <FormattedMessage id="nav.intro">{h => <h2 id="intro">{h}</h2>}</FormattedMessage>
                     <div>
                         <FormattedMessage id="intro_1" tagName="p"/>
                         <FormattedMessage id="intro_2" tagName="p"/>

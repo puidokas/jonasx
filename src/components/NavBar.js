@@ -15,7 +15,7 @@ class NavBar extends Component {
     }
 
     render() {
-        const { intl, content } = this.props;
+        const { intl } = this.props;
         let navHeader = <FaBars/>;
         let navItems;
         let navBarClass = "navbar";

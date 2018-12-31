@@ -56,7 +56,7 @@ class App extends Component {
                         <FormattedMessage id="intro_2" tagName="p"/>
                     </div>
                     <FormattedMessage id="nav.cv">{h => <h2 id="cv"><a href="#top">{h}</a></h2>}</FormattedMessage>
-                    <FormattedMessage id="cv">{t => <p>{t} <a href={this.content.cv_url} target="_blank"><FormattedMessage id="here">{t => t}</FormattedMessage></a>.</p>}</FormattedMessage>
+                    <FormattedMessage id="cv">{t => <p>{t} <a href={this.content.cv_url} target="_blank" rel="noopener noreferrer"><FormattedMessage id="here">{t => t}</FormattedMessage></a>.</p>}</FormattedMessage>
                     <h2 id="code"><a href="#top"><FormattedMessage id="nav.code"/></a></h2>
                     <p><FormattedMessage id="code" values={{git: <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a>}} /></p>
                     {/* <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a> */}

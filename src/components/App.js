@@ -41,6 +41,8 @@ class App extends Component {
         let language = this.state.lang;
         let messages = language === 'da' ? lang_da : lang_en;
 
+    
+
         addLocaleData([...locale_en, ...locale_da]);
 
         return (
@@ -52,12 +54,12 @@ class App extends Component {
                     <div>
                         <FormattedMessage id="intro_1" tagName="p"/>
                         <FormattedMessage id="intro_2" tagName="p"/>
-                        <FormattedMessage id="intro_3" tagName="p"/>
                     </div>
                     <FormattedMessage id="nav.cv">{h => <h2 id="cv"><a href="#top">{h}</a></h2>}</FormattedMessage>
                     <FormattedMessage id="cv">{t => <p>{t} <a href={this.content.cv_url} target="_blank"><FormattedMessage id="here">{t => t}</FormattedMessage></a>.</p>}</FormattedMessage>
-                    <FormattedMessage id="nav.code">{h => <h2 id="code"><a href="#top">{h}</a></h2>}</FormattedMessage>
-                    <FormattedMessage id="code">{t => <p>{t} <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a>.</p>}</FormattedMessage>
+                    <h2 id="code"><a href="#top"><FormattedMessage id="nav.code"/></a></h2>
+                    <p><FormattedMessage id="code" values={{git: <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a>}} /></p>
+                    {/* <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a> */}
                     <FormattedMessage id="nav.contact">{h => <h2 id="contact"><a href="#top">{h}</a></h2>}</FormattedMessage>
                     <p><FormattedMessage id="contact" values={{link: <a href="https://www.linkedin.com/in/hoffmannjonas/" rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/>.</p>
                 </div>

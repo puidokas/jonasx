@@ -1,25 +1,43 @@
 import React, { Component } from 'react';
 import {injectIntl} from 'react-intl';
-import { FaGitlab, FaLinkedin, FaIdCard } from "react-icons/fa";
+import { FaAngleRight, FaGitlab, FaLinkedin, FaIdCard, FaBars } from "react-icons/fa";
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            closed: true
+        };
+    }
+
+    changeStateNavBar = () => {
+        this.setState({closed: !this.state.closed});
+    }
+
     render() {
         const { intl, content } = this.props;
+        let navHeader = <FaBars/>;
+        let navItems;
+        let navBarClass = "navbar";
 
-        return(
-            <div className="navbar">
+        if(this.state.closed)
+        navBarClass += " hidden";
+
+        navItems = 
+            <div className={navBarClass}>
                 <div>
                     <b className="navName">Navigation:</b>
-                    <a href="#cv">{intl.formatMessage({id: "nav.cv"})}</a>
-                    <a href="#code">{intl.formatMessage({id: "nav.code"})}</a>
-                    <a href="#contact">{intl.formatMessage({id: "nav.contact"})}</a>
+                    <a href="#intro"><FaAngleRight/><div className="navText">{intl.formatMessage({id: "nav.intro"})}</div></a>
+                    <a href="#cv"><FaIdCard/><div className="navText">{intl.formatMessage({id: "nav.cv"})}</div></a>
+                    <a href="#code"><FaGitlab/><div className="navText">{intl.formatMessage({id: "nav.code"})}</div></a>
+                    <a href="#contact"><FaLinkedin/><div className="navText">{intl.formatMessage({id: "nav.contact"})}</div></a>
                 </div>
-                <div>
-                    <b className="navName">{intl.formatMessage({id: "quick_links"})}:</b>
-                    <a href={intl.formatMessage({id: "cv_url"})} target="_blank" data-tip={intl.formatMessage({id: "quick_links.cv"})}><FaIdCard/></a>
-                    <a href={content.git_url} target="_blank" data-tip={intl.formatMessage({id: "quick_links.code"})}><FaGitlab/></a>
-                    <a href={content.linkedin_url} target="_blank" data-tip={intl.formatMessage({id: "quick_links.li"})}><FaLinkedin/></a>
-                </div>
+            </div>
+
+        return(
+            <div>
+                <div className="navBarButton" onClick={() => {this.changeStateNavBar()}}>{navHeader}<div className="navBarButtonText">Navigation Bar</div></div>
+                {navItems}
             </div>
         );
     };

@@ -81,6 +81,8 @@ header h1 {
 
 .navbar a {
     padding: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
 }
 
 .navbar a:hover {
@@ -90,6 +92,10 @@ header h1 {
 
 .navName {
     padding: 0 10px 0 10px;
+}
+
+.navText {
+    margin-left: 10px;
 }
 
 .header {
@@ -102,9 +108,30 @@ h2 {
     margin: 10px 0 10px 0;
 }
 
+.navBarButtonText {
+    margin-left: 10px;
+}
+
+.navBarButton {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navBarButton:hover,
+.navBarButton:focus {
+    background: #ff5800;;
+}
+
 @media only screen and (min-width: 768px) {
     .container {
         width: 700px;
+    }
+
+    .navBarButton {
+        display: none;
     }
 }
 
@@ -121,5 +148,17 @@ h2 {
     .navbar div:nth-child(2) {
         flex-direction: column;
         align-items: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .navName {
+        display: none;
+    }
+
+    .navbar {
+        margin-top: 0;
     }
 } 

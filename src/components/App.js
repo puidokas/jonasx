@@ -53,7 +53,7 @@ class App extends Component {
                     <h2 id="code"><a href="#top"><FormattedMessage id="nav.code"/></a></h2>
                     <p><FormattedMessage id="code" values={{git: <a href={this.content.git_url} rel="noopener noreferrer" target='_blank'>GitLab</a>}} /></p>
                     <h2 id="contact"><a href="#top"><FormattedMessage id="nav.contact"/></a></h2>
-                    <p><FormattedMessage id="contact" values={{link: <a href="https://www.linkedin.com/in/hoffmannjonas/" rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/></p>
+                    <p><FormattedMessage id="contact" values={{link: <a href={this.content.linkedin_url} rel="noopener noreferrer" target='_blank'>LinkedIn</a>}}/></p>
                 </div>
             </IntlProvider>
         );

@@ -34,7 +34,7 @@ class App extends Component {
         this.setState({lang: changeTo});
     }
 
-    render() {        
+    render() {   
         let language = this.state.lang;
         let messages = language === 'da' ? lang_da : lang_en;
         addLocaleData([...locale_en, ...locale_da]);
